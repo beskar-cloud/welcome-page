@@ -25,7 +25,9 @@ jobs:
           
       - name: Prepare for Deployment
         run: |
-          mkdir -p build && cp -r $(ls | grep -v '^build$') 
+          mkdir -p build
+          cp -r ./* build/
+          rm -rf build/build
           
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
