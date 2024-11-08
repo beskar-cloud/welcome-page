@@ -17,7 +17,9 @@ jobs:
 
       - name: Install and Build
         run: |
-          npm cache clean
+          if [ ! -f package.json ]; then
+            npm init -y  # Create package.json if it doesn't exist
+          fi
           npm install
           npm ci
           npm run build
