@@ -22,7 +22,10 @@ jobs:
           fi
           npm install
           npm ci
-          npm run build
+          
+      - name: Prepare for Deployment
+        run: |
+          mkdir -p build && cp -r $(ls | grep -v '^build$') 
           
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
